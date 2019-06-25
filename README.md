@@ -1,13 +1,13 @@
 wxa: 微信小程序统计代码
 ==============================
 
-<a href="https://github.com/itboos/">
+<a href="https://developers.weixin.qq.com/miniprogram/dev/component/">
     <img src="https://img.shields.io/badge/-wx原生小程序-brightgreen.svg" alt="">
 </a>
-<a href="https://github.com/itboos/">
+<a href="https://wepyjs.github.io/wepy-docs/index.html">
     <img src="https://img.shields.io/badge/-wepy1.0-green.svg" alt="">
 </a>
-<a href="https://github.com/itboos/">
+<a href="https://wepyjs.github.io/wepy-docs/index.html">
     <img src="https://img.shields.io/badge/-wepy2.0-brightgreen.svg" alt="">
 </a>
 
@@ -27,8 +27,8 @@ wxa: 微信小程序统计代码
 如何使用?
 ----------------
 wepy 框架使用方法如下：
-克隆此仓库到你的本地，将sma项目文件夹拷贝到小程序的src目录下。
-1. 配置wxa: sma/config.js
+克隆此仓库到你的本地，将wxa项目文件夹拷贝到小程序的src目录下。
+1. 配置wxa: wxa/src/config.js
 ```javascript
    // 注意： 数据统计和错误上报，性能上报这三个接口可以一样可以都不同。
 const wxaConfig = {
@@ -47,14 +47,14 @@ const wxaConfig = {
     performanceReport: false, // 接口性能上报
     maxReportNum: 20, // 当次上报最大条数
     intervalTime: 15,  // 定时上报的时间间隔，单位 s, 仅当开启了定时上报有效。
-    networkList: ['wifi', '4g', '3g'], // 允许上报的网络环境
+    networkList: ['wifi', '5g', '4g', '3g', // 允许上报的网络环境(枚举，表示在此数组里的网络环境就允许上报)
     opportunity: 'pageHide' 
     // pageHide、appHide、realTime(实时上报)、timing(定时上报) 上报的时机，四选一
 }
 ```
 2. app.wepy 中引入文件。
 ```javascript
-   import wxa from './src/wxa/index.js'
+   import wxa from './src/wxa/src/index.js'
    wxa.init() // 初始化wxa
 ```
 3. 在获取用户登录后，设置用户信息。(也可以省略次步骤，这样统计的就是匿名信息。)
@@ -121,19 +121,19 @@ API
   *  数据统计:
   *  
   * 统计一条数据(非实时发送): 
-  * wx.wxa.track({ event: 'VIEW', dataTyep: 'PROMOTION', positionId: 'CLASS_BEFORE_OPEN', idpromotionId: '545' })
+  * wx.wxa.track({ event: 'CLICK', positionId: 'HOME_BUY_BUTTON', id: '545' })
   *        
   * 
-  * 统计一条数据(非实时发送, 并且这条数据使用指定的url发送): wx.wxa.track({ event: 'addTrack', url: '****', positionId: 'CLASS_BEFORE_OPEN', idpromotionId: '545', ...other })
+  * 统计一条数据(非实时发送, 并且这条数据使用指定的url发送): wx.wxa.track({ event: 'CLICK', url: '****', positionId: 'HOME_BUY_BUTTON', id: '545', ...other })
   * 
   * 统计一条数据(实时发送): 
-  * wx.wxa.track({ event: 'addTrack', isRealTime: true,  positionId: 'CLASS_BEFORE_OPEN', idpromotionId: '545', ...other })
+  * wx.wxa.track({ event: 'CLICK', isRealTime: true,  positionId: 'HOME_BUY_BUTTON', id: '545', ...other })
   * 
-  * 统计一条数据(实时发送，并且这条数据使用指定的url发送): wx.wxa.track({ event: 'addTrack', isRealTime: true, url: '*****', positionId: 'CLASS_BEFORE_OPEN', idpromotionId: '545', ...other })
+  * 统计一条数据(实时发送，并且这条数据使用指定的url发送): wx.wxa.track({ event: 'CLICK', isRealTime: true, url: '*****', positionId: 'HOME_BUY_BUTTON', id: '545', ...other })
   *  
   * 
   * 错误统计: 
-  * wx.wxa.errorReport({event: 'pageError', positionId: 'CLASS_BEFORE_OPEN', idpromotionId: '545', ...other })
+  * wx.wxa.errorReport({event: 'pageError', positionId: 'HOME_BUY_BUTTON', id: '545', ...other })
   *  
   * 
   * 性能统计: 
@@ -144,10 +144,6 @@ API
 更详细文档待补充。
 ----------------
 
-更新日志
-----------------
-
-https://github.com/itboos/wxa/releases
 
 项目主页
 ----------------
