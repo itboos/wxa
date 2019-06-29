@@ -1,0 +1,29 @@
+{
+  "name": "wxa",
+  "version": "1.0.0",
+  "description": "statistics library for miniprogram",
+  "main": "src/index.js",
+  "scripts": {
+    "wxa-output": "parcel build src/index.js --out-dir dist/wxa",
+    "post-processing": "node postProcessing.js",
+    "build": "npm run wxa-output && npm run post-processing"
+  },
+  "keywords": [
+    "miniprogram",
+    "statistics",
+    "wxapp"
+  ],
+  "license": "MIT",
+  "author": "zack Zhong <zhongdonling@gmail.com>",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "homepage": "https://github.com/itboos/wxa/",
+  "bugs": {
+    "url": "https://github.com/itboos/wxa/issues"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "dependencies": {}
+}

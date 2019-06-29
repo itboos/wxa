@@ -26,6 +26,25 @@ wxa: 微信小程序统计代码
 
 如何使用?
 ----------------
+微信原生开发：
+
+ 1. 克隆项目到本地配置好wxa: wxa/src/config.js
+
+ 2. 安装依赖 & build
+  ```sh
+    npm install
+    npm run build 
+  ```
+ 3. 将dist/wxa/ 目录拷贝进实际项目里
+
+ 4. 引入wxa, 初始化。
+
+ ```sh
+   var wxa = require('./path/wxa/').default
+   wxa.init()
+   wxa.start()
+ ```
+
 wepy 框架使用方法如下：
 克隆此仓库到你的本地，将wxa项目文件夹拷贝到小程序的src目录下。
 1. 配置wxa: wxa/src/config.js
